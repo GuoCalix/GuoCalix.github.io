@@ -5,70 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GuoCalix's Blog</title>
     <style>
+        :root {
+            --primary-color: rgba(255, 255, 255, 0.95);
+            --accent-color: #64b5f6;
+            --hover-effect: all 0.3s ease;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('snowmountain.png') fixed center/cover;
+            color: var(--primary-color);
         }
+
         header {
-            background-color: #333;
-            color: #fff;
             text-align: center;
-            padding: 10px 0;
+            padding: 6rem 2rem 4rem;
+            position: relative;
         }
-        nav {
-            background-color: #444;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .content {
-            padding: 20px;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
+
+        header::after {
+            content: '';
+            position: absolute;
             bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav a {
+            color: var(--primary-color);
+            margin: 0 2rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            transition: var(--hover-effect);
+            position: relative;
+        }
+
+        nav a:hover {
+            background: rgba(100, 181, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .article-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            transition: var(--hover-effect);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            nav a {
+                margin: 0 0.5rem;
+                padding: 0.6rem 1rem;
+                display: inline-block;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .content {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                margin: 0.5rem;
+                display: block;
+                width: fit-content;
+                margin: 0.5rem auto;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to GuoCalix's Blog</h1>
-        <p>分享我的编程学习与生活点滴</p>
+        <h1>GuoCalix's Space</h1>
+        <p>探索编程宇宙的无限可能 ✨</p>
     </header>
 
     <nav>
-        <a href="Cpp_abstract_data_type.html">C++抽象数据类型</a>
-        <a href="another-article.html">另一个文章</a>
-        <!-- 你可以添加更多文章链接 -->
+        <a href="#">技术笔记</a>
+        <a href="#">项目实践</a>
+        <a href="#">关于我</a>
     </nav>
 
     <div class="content">
         <h2>最新文章</h2>
-        <ul>
-            <li><a href="Cpp_abstract_data_type.html">C++抽象数据类型</a></li>
-            <li><a href="another-article.html">另一个文章</a></li>
-            <!-- 同样，你可以添加更多链接 -->
-        </ul>
+        
+        <div class="article-card">
+            <h3><a href="Cpp_abstract_data_type.html">C++抽象数据类型解析</a></h3>
+            <p>深入探讨C++中抽象数据类型的设计哲学与实现细节...</p>
+            <div class="meta">2024年3月 | 阅读量 514</div>
+        </div>
+
+        <div class="article-card">
+            <h3><a herf="python3_objects_and_class_introduction.html">Python面向对象编程杂记</a></h3>
+            <p>从class到object的路线图...</p>
+            <div class="meta">2024年2月 | 阅读量 114</div>
+        </div>
     </div>
 
     <footer>
-        <p>GuoCalix &copy; 2025</p>
+        <p>© 2025 GuoCalix | 代码如诗，思维似星</p>
     </footer>
 </body>
 </html>

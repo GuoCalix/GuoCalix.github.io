@@ -1,0 +1,309 @@
+<!DOCTYPE html><html><head>
+      <title>python3_objects_and_class_introduction</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/javascript">
+          window.MathJax = ({"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"options":{},"loader":{}});
+        </script>
+        <script type="text/javascript" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="objects">Objects </h1>
+<p><strong>Terminology:</strong></p>
+<ul>
+<li>HOF(higher-order funtion):a function that does at least one of the following:
+<ul>
+<li>takes one or more <strong>funtions</strong> as arguments</li>
+<li>returns a <strong>function</strong>  as its result</li>
+<li>In mathematics HOF is also called operator(算子) or functional(泛函)</li>
+<li>In a word, higher-order function is a function that operates functions</li>
+</ul>
+</li>
+<li>first-class function: An abstract process that is given a name</li>
+</ul>
+<h2 id="the-object-metaphor-and-realization">The object metaphor and realization </h2>
+<p>Object is a metaphor that is a combination of <strong>structured data</strong> and have its <strong>behavior</strong> like a function.<br>
+Object behave like the abstract concepts that they represent.</p>
+<p><strong>Class:</strong><br>
+A <strong>Class</strong> represent a kind of object.<br>
+And a specified object of this kind is called an instance(实例) of that class.<br>
+Object have <strong>attributes</strong>, which are named value that are part of the object.<br>
+Object have <strong>methods</strong>, which are function-valued attributes.</p>
+<ul>
+<li>All attribute of object is seperated by a <strong>dot</strong>(".")<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token operator">&lt;</span>expression<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token operator">&lt;</span>name<span class="token operator">&gt;</span> <span class="token comment">#expression is the name of an object, and name is the name of the attribute</span>
+</code></pre></li>
+<li>An object can be constructed by calling class as a function.<br>
+Just like:<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> datetime <span class="token keyword keyword-import">import</span> date
+today <span class="token operator">=</span> date <span class="token punctuation">(</span><span class="token number">2011</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">)</span>
+</code></pre></li>
+</ul>
+<hr>
+<h2 id="native-data-types">Native data types </h2>
+<h3 id="type">Type </h3>
+<ul>
+<li>Every object in Python has a <em>type</em> .</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-from">from</span> datetime <span class="token keyword keyword-import">import</span> date
+today <span class="token operator">=</span> date <span class="token punctuation">(</span><span class="token number">2011</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>today<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/Untitled-1<span class="token punctuation">.</span>py
+&lt;<span class="token keyword keyword-class">class</span> <span class="token string">'datetime.date'</span>&gt;
+<span class="token function">PS</span> C:\Users\calix&gt; 
+</code></pre><p>Native data type have the following two properties:</p>
+<ul>
+<li>There are primitive expressions that evaluate to objects of these types, called <em>literals</em>.</li>
+<li>There are built-in function, operators, and methods(these three are different) to manipulate these objects.</li>
+</ul>
+<p>Some native data type:</p>
+<ul>
+<li>numeric type: interger(int), real number(float), complex number(complex).(remember the one inside the parentheses is the class name)<pre data-role="codeBlock" data-info="python" class="language-python python"><code>a<span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+a<span class="token operator">=</span><span class="token builtin">float</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+a<span class="token operator">=</span><span class="token builtin">complex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code>&lt;<span class="token keyword keyword-class">class</span> <span class="token string">'int'</span>&gt;
+&lt;<span class="token keyword keyword-class">class</span> <span class="token string">'float'</span>&gt;
+&lt;<span class="token keyword keyword-class">class</span> <span class="token string">'complex'</span>&gt;
+</code></pre></li>
+<li>structure type: tuple, list, dict<pre data-role="codeBlock" data-info="python" class="language-python python"><code>a<span class="token operator">=</span><span class="token builtin">tuple</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+a<span class="token operator">=</span><span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+a<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code>&lt;<span class="token keyword keyword-class">class</span> <span class="token string">'tuple'</span>&gt;
+&lt;<span class="token keyword keyword-class">class</span> <span class="token string">'dict'</span>&gt;
+&lt;<span class="token keyword keyword-class">class</span> <span class="token string">'list'</span>&gt; 
+</code></pre></li>
+</ul>
+<h3 id="methods-of-native-data-types">Methods of Native Data Types </h3>
+<p>Some built in functions , methods or operators:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code> __getitem__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>index<span class="token punctuation">)</span> <span class="token comment">#And __getitem__(a,b) euqals to self[index].</span>
+ __setitem__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>index<span class="token punctuation">,</span>value<span class="token punctuation">)</span> <span class="token comment"># equals to self[index] = value</span>
+ __len__<span class="token punctuation">(</span>self<span class="token punctuation">)</span>
+ __str__<span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token comment"># called by str(object), or the built-in funtion format(),or print(), to return a printable string. So the return must be a str type.</span>
+ __repr__<span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token comment"># called by repr(), if str() is not defined, program will call repr() instead. Conventionally, repr() provide more formal and detailed information than str()</span>
+</code></pre><p>Some basic numerical operators:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>__lt__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>other<span class="token punctuation">)</span> <span class="token comment">#self &lt; other</span>
+__gt__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>other<span class="token punctuation">)</span> <span class="token comment">#self &gt; other</span>
+__eq__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>other<span class="token punctuation">)</span> <span class="token comment">#self == other</span>
+<span class="token comment"># these or extended ones</span>
+__le__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>other<span class="token punctuation">)</span> <span class="token comment"># self &lt;= other</span>
+__ge__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>other<span class="token punctuation">)</span> <span class="token comment"># self &gt;= other</span>
+__ne__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>other<span class="token punctuation">)</span> <span class="token comment"># self != other</span>
+<span class="token comment"># add</span>
+__add__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>other<span class="token punctuation">)</span> <span class="token comment"># self + other</span>
+__radd__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>other<span class="token punctuation">)</span> <span class="token comment"># other + self</span>
+<span class="token comment"># sub, mul the same as add</span>
+<span class="token comment"># floordiv</span>
+__floordiv__<span class="token punctuation">(</span>self<span class="token punctuation">,</span>other<span class="token punctuation">)</span> <span class="token comment"># self // other</span>
+</code></pre><hr>
+<h2 id="data-abstraction">Data Abstraction </h2>
+<p>Like before, we have constructed a pair abstraction, now we are going to introduce some more inportant data abstraction in python.</p>
+<p>The data abstraction is not a particular data type, but instead a collection of behaviors that different specific types share.</p>
+<h3 id="hof-and-data-structure">HOF and Data Structure </h3>
+<ul>
+<li>An interesting example: in fact we can make a compound data structure like <strong>tuple</strong> with function, though it's not python's way for efficiency reason.<pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code>&gt;&gt;&gt; def make_pair<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>:
+      <span class="token string">""</span><span class="token string">"Return a function that behaves like a pair."</span><span class="token string">""</span>
+      def dispatch<span class="token punctuation">(</span>m<span class="token punctuation">)</span>:
+        <span class="token keyword keyword-if">if</span> m == 0:
+            <span class="token keyword keyword-return">return</span> x
+        elif m == 1:
+            <span class="token keyword keyword-return">return</span> y
+      <span class="token keyword keyword-return">return</span> dispatch
+&gt;&gt;&gt; def getitem_pair<span class="token punctuation">(</span>p<span class="token punctuation">,</span> i<span class="token punctuation">)</span>:
+      <span class="token string">""</span><span class="token string">"Return the element at index i of pair p."</span><span class="token string">""</span>
+      <span class="token keyword keyword-return">return</span> p<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+&gt;&gt;&gt; p = make_pair<span class="token punctuation">(</span>1<span class="token punctuation">,</span> 2<span class="token punctuation">)</span>
+&gt;&gt;&gt; getitem_pair<span class="token punctuation">(</span>p<span class="token punctuation">,</span> 0<span class="token punctuation">)</span>
+1
+&gt;&gt;&gt; getitem_pair<span class="token punctuation">(</span>p<span class="token punctuation">,</span> 1<span class="token punctuation">)</span>
+2
+</code></pre></li>
+</ul>
+<h3 id="sequence">Sequence </h3>
+<p>Shared characteristics:</p>
+<ul>
+<li><strong>Length</strong>:A sequence has a finite length.</li>
+<li><strong>Element selection</strong>:Every elements in the sequence is corresponding to an number in the range <span class="mathjax-exps">$\lbrace a\in N|a&lt;Length \rbrace$</span>. And any number in the range is corresponding to an element.</li>
+</ul>
+<p>There are several ways to form a sequence</p>
+<ul>
+<li>recursive list: contains of the first element and the rest of the list recursively.<br>e.g.<code>(1, (2, (3, (4, None))))</code>
+<ul>
+<li>Find length: Peel the list iteratively until the end mark and count the length.</li>
+<li>select element: Peel the list till meet the element of the signated number.</li>
+</ul>
+</li>
+<li>tuple: A full sequence which can use operators like '[]', '+', and '*'.</li>
+<li>map: A built-in function relies on the sequence abstraction. Orderly access each elements in a sequence and operate with specified function than return in a sequence.<pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code>&gt;&gt;&gt; alternate = <span class="token punctuation">(</span>1<span class="token punctuation">,</span><span class="token operator">-</span>2<span class="token punctuation">,</span>3<span class="token punctuation">,</span><span class="token operator">-</span>4<span class="token punctuation">,</span>5<span class="token punctuation">)</span>
+&gt;&gt;&gt; new = tuple<span class="token punctuation">(</span>map<span class="token punctuation">(</span>abs<span class="token punctuation">,</span>alternate<span class="token punctuation">)</span><span class="token punctuation">)</span>
+&gt;&gt;&gt; new
+<span class="token punctuation">(</span>1<span class="token punctuation">,</span> 2<span class="token punctuation">,</span> 3<span class="token punctuation">,</span> 4<span class="token punctuation">,</span> 5<span class="token punctuation">)</span>
+&gt;&gt;&gt; <span class="token function">type</span><span class="token punctuation">(</span>map<span class="token punctuation">(</span>abs<span class="token punctuation">,</span>alternate<span class="token punctuation">)</span><span class="token punctuation">)</span>
+&lt;<span class="token keyword keyword-class">class</span> <span class="token string">'map'</span>&gt;
+&gt;&gt;&gt; new = list<span class="token punctuation">(</span>map<span class="token punctuation">(</span>abs<span class="token punctuation">,</span>alternate<span class="token punctuation">)</span><span class="token punctuation">)</span>
+&gt;&gt;&gt; new
+<span class="token punctuation">[</span>1<span class="token punctuation">,</span> 2<span class="token punctuation">,</span> 3<span class="token punctuation">,</span> 4<span class="token punctuation">,</span> 5<span class="token punctuation">]</span>
+&gt;&gt;&gt; 
+</code></pre></li>
+<li>string</li>
+<li>range: a built in sequencial function, based on sequence metaphor.</li>
+</ul>
+<hr>
+<h2 id="features-of-the-object">Features of the object </h2>
+<h3 id="mutable-and-immutable-objects">Mutable and Immutable Objects </h3>
+<p>There are two types of objects in python: mutable and immutable.Whenever an object is instantiated, it is assigned a unique unchangeable object id. But the state of mutable objects can be changed while the immutable objects can't.</p>
+<ul>
+<li>Immutable objects in python:int, float, bool, string, tuple, Unicode.</li>
+<li>Mutable objects in python:list, dic and set.</li>
+</ul>
+<p>Difference: Immutable objects is easy to access but expensive to change because it involves the creation of a copy.</p>
+<h3 id="nonelocal-and-global">Nonelocal and Global </h3>
+<p><strong>Nonelocal</strong> statement mandates that whenever we changed the binding of the name 'xxx', the binding is changed in the first frame in which 'xxx' is already bound.<br>
+And without a nonlocal statement, an assignment statement would always bound the first frame of the environment.</p>
+<pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code>&gt;&gt;&gt; def make_withdraw<span class="token punctuation">(</span>balance<span class="token punctuation">)</span>:
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>             <span class="token string">""</span><span class="token string">"Return a withdraw function that draws down balance with each call."</span><span class="token string">""</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>             def withdraw<span class="token punctuation">(</span>amount<span class="token punctuation">)</span>:
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                         nonlocal balance
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                         <span class="token keyword keyword-if">if</span> amount&gt;balance:
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                                     <span class="token keyword keyword-return">return</span> <span class="token string">'Insufficient funds'</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+&gt;&gt;&gt; def make_withdraw<span class="token punctuation">(</span>balance<span class="token punctuation">)</span>:
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>             <span class="token string">""</span><span class="token string">"Return a withdraw function that draws down balance with each call."</span><span class="token string">""</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>             def withdraw<span class="token punctuation">(</span>amount<span class="token punctuation">)</span>:
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                         nonlocal balance
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                         <span class="token keyword keyword-if">if</span> amount&gt;balance:
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                                     <span class="token keyword keyword-return">return</span> <span class="token string">'Insufficient funds'</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                         balance = balance <span class="token operator">-</span> amount                                                                                                                                           
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                         <span class="token keyword keyword-return">return</span> balance                                                                                                                                                       
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>             <span class="token keyword keyword-return">return</span> withdraw                                                                                                                                                                  
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+&gt;&gt;&gt; withdraw = make_withdraw<span class="token punctuation">(</span>100<span class="token punctuation">)</span>
+&gt;&gt;&gt; withdraw<span class="token punctuation">(</span>10<span class="token punctuation">)</span>
+90
+&gt;&gt;&gt; withdraw<span class="token punctuation">(</span>27<span class="token punctuation">)</span>
+63
+&gt;&gt;&gt; withdraw<span class="token punctuation">(</span>60<span class="token punctuation">)</span>
+3
+&gt;&gt;&gt; withdraw<span class="token punctuation">(</span>10<span class="token punctuation">)</span>
+<span class="token string">'Insufficient funds'</span>
+&gt;&gt;&gt; make_withdraw<span class="token punctuation">(</span>100<span class="token punctuation">)</span>
+&lt;<span class="token keyword keyword-function">function</span> make_withdraw<span class="token punctuation">.</span>&lt;locals&gt;<span class="token punctuation">.</span>withdraw at 0x000002CC77F12020&gt;
+</code></pre><p>Why this could happen is detailed in the note <em>python3_mechanism&amp;frame</em>.<br>
+When we call make_withdraw again, it will create another frame seperated with the former with_draw and thus the former balance.</p>
+<pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code>&gt;&gt;&gt; withdraw_2=make_withdraw<span class="token punctuation">(</span>100<span class="token punctuation">)</span>
+&gt;&gt;&gt; withdraw_2<span class="token punctuation">(</span>10<span class="token punctuation">)</span>
+90
+</code></pre><p>In a word, the case is that only function call can introduce new frames. Assignment statement only changes bindings in the exsiting frames.</p>
+<p><strong>Global</strong> statement can be used to indicate that particular variables live in the global frame(scope) and should be rebound there.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-def">def</span> <span class="token function">scope_test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-def">def</span> <span class="token function">do_local</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        spam <span class="token operator">=</span> <span class="token string">"local spam"</span>
+
+    <span class="token keyword keyword-def">def</span> <span class="token function">do_nonlocal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword keyword-nonlocal">nonlocal</span> spam
+        spam <span class="token operator">=</span> <span class="token string">"nonlocal spam"</span>
+
+    <span class="token keyword keyword-def">def</span> <span class="token function">do_global</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword keyword-global">global</span> spam
+        spam <span class="token operator">=</span> <span class="token string">"global spam"</span>
+
+    spam <span class="token operator">=</span> <span class="token string">"test spam"</span>
+    do_local<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"After local assignment:"</span><span class="token punctuation">,</span> spam<span class="token punctuation">)</span>
+    do_nonlocal<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"After nonlocal assignment:"</span><span class="token punctuation">,</span> spam<span class="token punctuation">)</span>
+    do_global<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"After global assignment:"</span><span class="token punctuation">,</span> spam<span class="token punctuation">)</span>
+
+scope_test<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"In global scope:"</span><span class="token punctuation">,</span> spam<span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/Untitled-1<span class="token punctuation">.</span>py
+After local assignment: test spam
+After nonlocal assignment: nonlocal spam
+After global assignment: nonlocal spam
+In global scope: global spam
+<span class="token function">PS</span> C:\Users\calix&gt; 
+</code></pre><p>That because when print in the scope_text(), python first find in the scope_text() frame. And the do_local() bind spam in the do_local() frame, and the do_global() frame bind spam in the global frame.</p>
+<h3 id="is-statement">Is Statement </h3>
+<p>So how to tell whether two name is really bond to the same object or just two objects with the same value temporarily?</p>
+<ul>
+<li>is and equal:
+<ul>
+<li>we can use is to tell wether two name or bond to the same object.</li>
+<li>we can use '==' to tell wether the value of two objects is same.</li>
+</ul>
+</li>
+</ul>
+<h3 id="del">del </h3>
+<p><code>object.__del__(self)</code> is a method that <strong>any</strong> object has. It is called when the instance is about to be destroyed.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-def">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>a<span class="token operator">=</span>a
+x1 <span class="token operator">=</span> A<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>x1<span class="token punctuation">.</span>a<span class="token punctuation">)</span>
+<span class="token keyword keyword-del">del</span> x1
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>x1<span class="token punctuation">.</span>a<span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token number">1</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"d:\tmp\temp_quick_test.py"</span><span class="token punctuation">,</span> line <span class="token number">7</span><span class="token punctuation">,</span> <span class="token keyword keyword-in">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>x1<span class="token punctuation">.</span>a<span class="token punctuation">)</span>
+          <span class="token operator">^</span><span class="token operator">^</span>
+NameError<span class="token punctuation">:</span> name <span class="token string">'x1'</span> <span class="token keyword keyword-is">is</span> <span class="token keyword keyword-not">not</span> defined
+</code></pre><hr>
+<h2 id="class">Class </h2>
+<p>The definition of class:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-class">class</span> <span class="token operator">&lt;</span>name<span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span>base <span class="token keyword keyword-class">class</span><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token triple-quoted-string string">"""docstring"""</span>
+  <span class="token operator">&lt;</span>statements<span class="token operator">&gt;</span>
+</code></pre><p><code>&lt;name&gt;.__doc___ # return the docstring of the class</code></p>
+<p>when a class define an <code>__init__(self)</code>method, class invokes <code>__init__()</code> automatically for newly created class.</p>
+<p><strong>Inheritance</strong> : The base class must allow subclassing. Class without an interitance list inherit, by default, from the base class <code>object</code>. And that's why there are so many common features that any type of object has.</p>
+<hr>
+<h2 id="module">Module </h2>
+<p>A module is a file containing python definition and <a href="http://statement.It">statement.It</a> is a set of class and other related function to provide extention.<br>
+The file name is the module name with suffix <code>.py</code>.</p>
+<ul>
+<li><code>__name__</code> : the <code>__name__</code> is the name of an object.
+<ul>
+<li>When a Python module or package is imported, <code>__name__</code> is the name of the module without the <code>.py</code> extension.</li>
+<li>The <code>__name__</code> of top level environment is <code>__main__</code>, so it's common to use <code>__name__ == '__main__'</code> to check whether the code is executed in the top level.<br>
+<a href="https://docs.python.org/3/tutorial/modules.html">more information</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
