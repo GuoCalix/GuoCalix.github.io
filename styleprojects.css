@@ -60,6 +60,8 @@ nav a:hover {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 2rem;
+    transition: margin-left 0.3s ease;
+    margin-left: 60px; /* 让内容右移，避开边栏 */
 }
 
 .article-card {
@@ -70,6 +72,8 @@ nav a:hover {
     transition: var(--hover-effect);
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    /* 新增：偏移量来确保卡片在页面的中心 */
+    margin-left: calc(10px + 10%); /* 根据边栏宽度来动态计算 */
 }
 
 .article-card:hover {
@@ -116,15 +120,54 @@ h2 {
 
     .content {
         padding: 0 1rem;
+        margin-left: 0; /* 手机端没有边栏偏移 */
+    }
+
+    .sidebar {
+        width: 60px;
+        padding-top: 2rem;
+        z-index: 200;
+    }
+
+    .sidebar:hover {
+        width: 150px;
+    }
+
+    .tab {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .sidebar .label {
+        display: none;
+    }
+
+    .sidebar:hover .label {
+        display: inline-block;
     }
 }
 
 @media (max-width: 480px) {
-    nav a {
-        margin: 0.5rem;
-        display: block;
-        width: fit-content;
-        margin: 0.5rem auto;
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar:hover {
+        width: 150px;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .sidebar {
+        width: 200px; /* 边栏宽度为200px */
+    }
+
+    .sidebar:hover {
+        width: 200px;
     }
 }
 
@@ -144,10 +187,6 @@ h2 {
     flex-direction: column;
     align-items: stretch;
     padding-top: 4rem;
-}
-
-.sidebar:hover {
-    width: 200px;
 }
 
 .tab {
