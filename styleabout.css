@@ -1,0 +1,134 @@
+:root {
+    --primary-color: #333;
+    --accent-color: #2196f3;
+    --hover-effect: all 0.3s ease;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --nav-bg: rgba(255, 255, 255, 0.85);
+    --footer-bg: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+    background: url('landscape.png') fixed center/cover;
+    color: var(--primary-color);
+    background-color: #f9f9f9;
+}
+
+header {
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.6);
+    /*backdrop-filter: blur(4px);*/
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--accent-color);
+}
+
+nav {
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    padding: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: var(--primary-color);
+    margin: 0 2rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    transition: var(--hover-effect);
+    text-decoration: none;
+}
+
+nav a:hover {
+    background: rgba(33, 150, 243, 0.1);
+    transform: translateY(-2px);
+}
+
+.content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.article-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    transition: var(--hover-effect);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background: var(--footer-bg);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 5rem;
+    backdrop-filter: blur(5px);
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+h2 {
+    color: var(--accent-color);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem;
+    }
+
+    nav a {
+        margin: 0 0.5rem;
+        padding: 0.6rem 1rem;
+        display: inline-block;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .content {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav a {
+        margin: 0.5rem;
+        display: block;
+        width: fit-content;
+        margin: 0.5rem auto;
+    }
+}

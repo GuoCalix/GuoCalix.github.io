@@ -1,0 +1,190 @@
+:root {
+    --primary-color: rgba(255, 255, 255, 0.95);
+    --accent-color: #64b5f6;
+    --hover-effect: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('swordsman.png') fixed center/cover;
+    color: var(--primary-color);
+}
+
+header {
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--accent-color);
+}
+
+nav {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+nav a {
+    color: var(--primary-color);
+    margin: 0 2rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    transition: var(--hover-effect);
+    position: relative;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background: rgba(100, 181, 246, 0.2);
+    transform: translateY(-2px);
+}
+
+.content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.article-card {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    transition: var(--hover-effect);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 5rem;
+    backdrop-filter: blur(5px);
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    color: var(--accent-color);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem;
+    }
+
+    nav a {
+        margin: 0 0.5rem;
+        padding: 0.6rem 1rem;
+        display: inline-block;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .content {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav a {
+        margin: 0.5rem;
+        display: block;
+        width: fit-content;
+        margin: 0.5rem auto;
+    }
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 60px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease;
+    z-index: 200;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 4rem;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    color: #222;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.tab:hover {
+    background: rgba(100, 181, 246, 0.2);
+    transform: translateX(5px);
+}
+
+.tab.active {
+    background: rgba(100, 181, 246, 0.35);
+    font-weight: bold;
+    color: #000;
+}
+
+.icon {
+    font-size: 1.5rem;
+    margin-right: 0;
+    transition: margin 0.3s ease;
+    width: 24px;
+    text-align: center;
+}
+
+.label {
+    opacity: 0;
+    white-space: nowrap;
+    margin-left: 0.8rem;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar:hover .label {
+    opacity: 1;
+}

@@ -1,0 +1,317 @@
+<!DOCTYPE html><html><head>
+      <title>python3_exception&amp;assertion</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/javascript">
+          window.MathJax = ({"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"options":{},"loader":{}});
+        </script>
+        <script type="text/javascript" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="exception-and-assertion">Exception and Assertion </h1>
+<p>In this note we will introduce some useful techniques to handle exception and assertion in python3.</p>
+<h2 id="exception">Exception </h2>
+<p>Different from a <strong>syntax error</strong> or a parsing(语法) error, an exception is an error detected while executing the program.(That's why an exception is also called a <strong>runtime error</strong>.)<br>
+There are many types of exceptions, some are <a href="https://docs.python.org/3/library/exceptions.html#bltin-exceptions">built-in-type</a> and others are exceptions built by programmers.<br>
+In the following parts we will cover some common types of exceptions, and some statements useful in handling exceptions.</p>
+<h3 id="compound-statement">Compound Statement </h3>
+<p><strong>Compound statements</strong> contains group of other statements. The <strong>if</strong>, <strong>while</strong> and <strong>for</strong> statements implement traditional control flow constructs. <strong>try</strong> statement specifies exception handlers (like <strong>except</strong>, <strong>try</strong>) and cleanup code (like <strong>finally</strong> can ensure the execution of the releasing(cleanup) code). <strong>with</strong> statement allows the execution of initialization(初始化) and finalization(复原化) around a block of code. Function and class definitions are also syntactically compound statements.</p>
+<h3 id="common-built-in-exception">Common Built-in Exception </h3>
+<ul>
+<li>NameError: Raised when a local or global name is not found. This applied only to unqualified name <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</li>
+<li>UnboundLocalError: This is a subclass of <strong>NameError</strong>, raised when a reference is made to local variable in a function or method, but no value has been bound to that variable.</li>
+<li>IndexError: Raised when a sequence subscript is out of range.</li>
+<li>TypeError: Raised when an operation or function is applied to an object of inappropriate type.</li>
+<li>ValueError: Raised when an operation or function recieves an argument that has the right type but inappropriate value.</li>
+<li>KeyError: Raised when a mapping(dictionary) key is not found in the set of existing keys.</li>
+<li>ZeroDivisionError: Raised when divided by zero.</li>
+<li>AssertionError: Raised when an <strong>assert</strong> statement failed.(see more in the <strong>assertion</strong> part)</li>
+<li>AttributeError: Raised when an attribute reference or assignment fails. (if an object do not support attribute, a <strong>TypeError</strong> is raised)<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></li>
+</ul>
+<h3 id="try-and-except">try and except </h3>
+<p>We can use try and except to handle exception.</p>
+<ul>
+<li>execute the try clause
+<ul>
+<li>if no exception, skip the except clause</li>
+<li>if have exception, jump to the except part, compare the exception type with the type after except
+<ul>
+<li>if type matches execute the except part and continue.</li>
+<li>if don't match break to the outer try, if no outer try stop with an error message.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-while">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"please input an integer"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        y <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> x
+    <span class="token keyword keyword-except">except</span> ValueError<span class="token punctuation">:</span>
+        <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"No valid number, try again"</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-except">except</span> ZeroDivisionError<span class="token punctuation">:</span>
+        <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"ZeroDivision Error"</span><span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/Untitled-1<span class="token punctuation">.</span>py
+please input an integer1
+please input an integer1<span class="token punctuation">.</span>1
+No valid number<span class="token punctuation">,</span> <span class="token keyword keyword-try">try</span> again
+please input an integer0
+ZeroDivision Error
+please input an integer2
+please input an integer
+</code></pre><p>if we delete the ZeroDivision handler:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-while">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"please input an integer"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        y <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> x
+    <span class="token keyword keyword-except">except</span> ValueError<span class="token punctuation">:</span>
+        <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"No valid number, try again"</span><span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/Untitled-1<span class="token punctuation">.</span>py
+please input an integer1<span class="token punctuation">.</span>1
+No valid number<span class="token punctuation">,</span> <span class="token keyword keyword-try">try</span> again
+please input an integer2 
+please input an integer0
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"d:\tmp\Untitled-1.py"</span><span class="token punctuation">,</span> line 4<span class="token punctuation">,</span> in &lt;module&gt;
+    y = 1 <span class="token operator">/</span> x
+        ~~^~~
+ZeroDivisionError: division by zero
+<span class="token function">PS</span> C:\Users\calix&gt;
+</code></pre><h3 id="raise-exception">raise exception </h3>
+<p>The raise statement allows the programmer to force a specified exception to occur.</p>
+<p>The sole argument after raise must be either an exception instance or an exception class (a class derives form BaseException, such as <strong>Exception</strong> or one of its subcalss)</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> raise TypeError<span class="token punctuation">(</span><span class="token string">"yes"</span><span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"&lt;python-input-0&gt;"</span>, line <span class="token number">1</span>, <span class="token keyword keyword-in">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+    raise TypeError<span class="token punctuation">(</span><span class="token string">"yes"</span><span class="token punctuation">)</span>
+TypeError: <span class="token function">yes</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> raise Exception<span class="token punctuation">(</span><span class="token string">"No"</span><span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"&lt;python-input-1&gt;"</span>, line <span class="token number">1</span>, <span class="token keyword keyword-in">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+    raise Exception<span class="token punctuation">(</span><span class="token string">"No"</span><span class="token punctuation">)</span>
+Exception: No
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> raise Exception<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"&lt;python-input-2&gt;"</span>, line <span class="token number">1</span>, <span class="token keyword keyword-in">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+    raise Exception<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+Exception: <span class="token number">1</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> 
+</code></pre><p>Moreover if you don't want to handle the exception but want to know which exception is raised you can use <strong>raise</strong> to simply re-raise the exception that is currently handled (if no such exception it will raise run time error).</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-raise">raise</span> NameError<span class="token punctuation">(</span><span class="token string">"HiThere"</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-except">except</span> NameError<span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"An exception flew by"</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-raise">raise</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/temp_quick_test<span class="token punctuation">.</span>py
+An exception flew by
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"d:\tmp\temp_quick_test.py"</span><span class="token punctuation">,</span> line 2<span class="token punctuation">,</span> in &lt;module&gt;
+    raise NameError<span class="token punctuation">(</span><span class="token string">"HiThere"</span><span class="token punctuation">)</span>
+NameError: HiThere
+<span class="token function">PS</span> C:\Users\calix&gt;
+</code></pre><p>with no active exception:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-raise">raise</span> NameError<span class="token punctuation">(</span><span class="token string">"HiThere"</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-except">except</span> NameError<span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"An exception flew by"</span><span class="token punctuation">)</span>
+    
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"All the work is done"</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-raise">raise</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/temp_quick_test<span class="token punctuation">.</span>py
+An exception flew by
+All the work is done
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"d:\tmp\temp_quick_test.py"</span><span class="token punctuation">,</span> line 7<span class="token punctuation">,</span> in &lt;module&gt;
+    raise
+RuntimeError: No active exception to reraise
+<span class="token function">PS</span> C:\Users\calix&gt; 
+</code></pre><h3 id="exception-chaining">Exception chaining </h3>
+<p>If during the handle of an exception another exception is arised, it will have the exception being handled and the new exception attached in the error message.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-raise">raise</span> NameError<span class="token punctuation">(</span><span class="token string">"HiThere"</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-except">except</span> NameError<span class="token punctuation">:</span>
+    <span class="token keyword keyword-raise">raise</span> RuntimeError<span class="token punctuation">(</span><span class="token string">"YesMe"</span><span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/temp_quick_test<span class="token punctuation">.</span>py
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"d:\tmp\temp_quick_test.py"</span><span class="token punctuation">,</span> line 2<span class="token punctuation">,</span> in &lt;module&gt;
+    raise NameError<span class="token punctuation">(</span><span class="token string">"HiThere"</span><span class="token punctuation">)</span>
+NameError: HiThere
+
+During handling of the above exception<span class="token punctuation">,</span> another exception occurred:
+
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"d:\tmp\temp_quick_test.py"</span><span class="token punctuation">,</span> line 4<span class="token punctuation">,</span> in &lt;module&gt;
+    raise RuntimeError<span class="token punctuation">(</span><span class="token string">"YesMe"</span><span class="token punctuation">)</span>
+RuntimeError: YesMe
+<span class="token function">PS</span> C:\Users\calix&gt; 
+</code></pre><h3 id="finally-and-else">Finally and Else </h3>
+<p>A finally clause is <strong>always</strong> executed before leaving the try statement, whether an exception or some extreme condition(like break) is occured or not.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment">#example1</span>
+<span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-raise">raise</span> NameError<span class="token punctuation">(</span><span class="token string">"HiThere"</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-except">except</span> NameError<span class="token punctuation">:</span>
+    <span class="token keyword keyword-raise">raise</span> RuntimeError<span class="token punctuation">(</span><span class="token string">"YesMe"</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-finally">finally</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"HelloWorld"</span><span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/temp_quick_test<span class="token punctuation">.</span>py
+HelloWorld
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"d:\tmp\temp_quick_test.py"</span><span class="token punctuation">,</span> line 2<span class="token punctuation">,</span> in &lt;module&gt;
+    raise NameError<span class="token punctuation">(</span><span class="token string">"HiThere"</span><span class="token punctuation">)</span>
+NameError: HiThere
+
+During handling of the above exception<span class="token punctuation">,</span> another exception occurred:
+
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"d:\tmp\temp_quick_test.py"</span><span class="token punctuation">,</span> line 4<span class="token punctuation">,</span> in &lt;module&gt;
+    raise RuntimeError<span class="token punctuation">(</span><span class="token string">"YesMe"</span><span class="token punctuation">)</span>
+RuntimeError: YesMe
+<span class="token function">PS</span> C:\Users\calix&gt;
+</code></pre><pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment">#example2</span>
+<span class="token keyword keyword-def">def</span> <span class="token function">try_finally</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+        <span class="token keyword keyword-return">return</span> <span class="token string">"try"</span>
+    <span class="token keyword keyword-finally">finally</span><span class="token punctuation">:</span>
+        <span class="token keyword keyword-return">return</span> <span class="token string">"fianlly"</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>try_finally<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/temp_quick_test<span class="token punctuation">.</span>py
+fianlly
+<span class="token function">PS</span> C:\Users\calix&gt; 
+</code></pre><p>In real world application finally is useful for releasing external resources (such as files or network connections), regardless of whether the use of the resources is successful.</p>
+<p><strong>Else</strong> clause must follow all <strong>except</strong> clause and is executed if the try clause dosen't raise an exception.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    a<span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"please input an integer:"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-except">except</span> Exception<span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"Please input again"</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-else">else</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"Yes, you have input:"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/temp_quick_test<span class="token punctuation">.</span>py
+please input an integer:3
+Yes<span class="token punctuation">,</span> you have input: 3
+<span class="token function">PS</span> C:\Users\calix&gt;
+</code></pre><h3 id="self-defined-exception-and-derived-relation">Self-defined Exception and Derived Relation </h3>
+<p>All built-in, non-system-exiting exception are derived from the <strong>Exception</strong> class, and user-defined exception must be derived from any of the built-in exception class and is encouraged to derived form the <strong>Exception</strong> class.<br>
+And <strong>except</strong> clause matches exceptions which are instances of the class or one of its derived class. As an example showed below.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">AError</span><span class="token punctuation">(</span>Exception<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-pass">pass</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">BError</span><span class="token punctuation">(</span>AError<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-pass">pass</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">CError</span><span class="token punctuation">(</span>BError<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-pass">pass</span>
+<span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-raise">raise</span> CError
+<span class="token keyword keyword-except">except</span> AError<span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"AError is raised"</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-raise">raise</span> ZeroDivisionError
+<span class="token keyword keyword-except">except</span> Exception<span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">"An exception is raised"</span><span class="token punctuation">)</span>
+a <span class="token operator">=</span> AError<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>AError<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>RuntimeError<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-raise">raise</span> a
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/temp_quick_test<span class="token punctuation">.</span>py
+AError is raised
+An exception is raised
+&lt;<span class="token keyword keyword-class">class</span> <span class="token string">'__main__.AError'</span>&gt;
+&lt;<span class="token keyword keyword-class">class</span> <span class="token string">'type'</span>&gt;
+&lt;<span class="token keyword keyword-class">class</span> <span class="token string">'type'</span>&gt;
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"d:\tmp\temp_quick_test.py"</span><span class="token punctuation">,</span> line 19<span class="token punctuation">,</span> in &lt;module&gt;
+    raise a
+AError
+<span class="token function">PS</span> C:\Users\calix&gt; 
+</code></pre><h3 id="with-statement">with statement </h3>
+<p>The <strong>with</strong> statement is used to wrap common <strong>try-except-finally</strong> usage pattern for convenient use.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'Text_file.txt'</span><span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-finally">finally</span><span class="token punctuation">:</span>
+    f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><p>The code can be simplified as:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-with">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'Text_file.txt'</span><span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword keyword-as">as</span> f<span class="token punctuation">:</span>
+    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span>
+</code></pre><h2 id="assert-statement">Assert statement </h2>
+<p>The <strong>assert</strong> is <strong>not</strong> a kind of compound statements while it's a kind of simple satatements.<br>
+The <strong>assert</strong> key word let you test if a condition in your code returns True, if not, the program raise an <strong>AssertionError</strong>.<br>
+usage:<br>
+<code>assert expression1 [, expression2]</code> is equivalent to</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-if">if</span> __debug__<span class="token punctuation">:</span>
+    <span class="token keyword keyword-if">if</span> <span class="token keyword keyword-not">not</span> expression1 <span class="token punctuation">:</span> <span class="token keyword keyword-raise">raise</span> AssertionError<span class="token punctuation">(</span>expression2<span class="token punctuation">)</span>
+</code></pre><p>for example:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-def">def</span> <span class="token function">test_assert</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-assert">assert</span> <span class="token number">0</span> <span class="token operator">&lt;</span> r <span class="token operator">&lt;</span> <span class="token number">1</span> <span class="token punctuation">,</span> \
+    <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>r<span class="token operator">=</span><span class="token punctuation">}</span></span><span class="token string"> is expected to be between 0 and 1"</span></span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>r<span class="token operator">=</span><span class="token punctuation">}</span></span><span class="token string"> is valid"</span></span><span class="token punctuation">)</span>
+
+test_assert<span class="token punctuation">(</span><span class="token number">0.2</span><span class="token punctuation">)</span>
+test_assert<span class="token punctuation">(</span><span class="token number">0.7</span><span class="token punctuation">)</span>
+test_assert<span class="token punctuation">(</span><span class="token number">1.2</span><span class="token punctuation">)</span> 
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/temp_quick_test<span class="token punctuation">.</span>py
+r=0<span class="token punctuation">.</span>2 is valid
+r=0<span class="token punctuation">.</span>7 is valid
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"d:\tmp\temp_quick_test.py"</span><span class="token punctuation">,</span> line 8<span class="token punctuation">,</span> in &lt;module&gt;
+    test_assert<span class="token punctuation">(</span>1<span class="token punctuation">.</span>2<span class="token punctuation">)</span>
+    ~~~~~~~~~~~^^^^^
+  File <span class="token string">"d:\tmp\temp_quick_test.py"</span><span class="token punctuation">,</span> line 2<span class="token punctuation">,</span> in test_assert
+    assert 0 &lt; r &lt; 1 <span class="token punctuation">,</span> \
+           ^^^^^^^^^
+AssertionError: r=1<span class="token punctuation">.</span>2 is expected to be between 0 and 1
+<span class="token function">PS</span> C:\Users\calix&gt; 
+</code></pre><p>if the code is in production, then just set the <code>__debug__</code> with <code>False</code> which default is <code>True</code>, than the assert while not work.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>An unqualified name is a name without a prefix or explicit(明确的) context (or simply the name without dot). <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Just like the following example:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+    a<span class="token operator">=</span><span class="token number">1</span>
+    <span class="token keyword keyword-pass">pass</span>
+B<span class="token operator">=</span>A<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>B<span class="token punctuation">.</span>b<span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="powershell" class="language-powershell powershell"><code><span class="token function">PS</span> C:\Users\calix&gt; &amp; <span class="token string">"C:/Program Files/Python313/python.exe"</span> d:<span class="token operator">/</span>tmp/temp_quick_test<span class="token punctuation">.</span>py
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:
+  File <span class="token string">"d:\tmp\temp_quick_test.py"</span><span class="token punctuation">,</span> line 5<span class="token punctuation">,</span> in &lt;module&gt;
+    print<span class="token punctuation">(</span>B<span class="token punctuation">.</span>b<span class="token punctuation">)</span>
+          ^^^
+AttributeError: <span class="token string">'A'</span> object has no attribute <span class="token string">'b'</span>
+<span class="token function">PS</span> C:\Users\calix&gt;
+</code></pre> <a href="#fnref2" class="footnote-backref">↩︎</a></li>
+</ol>
+</section>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
