@@ -270,7 +270,7 @@ h2 {
         display: block;
         position: fixed;
         top: 1rem;
-        left: 0.7rem;
+        margin-right: 0;
         background: transparent;
         border: none;
         font-size: 2rem;
