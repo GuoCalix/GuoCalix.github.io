@@ -46,5 +46,14 @@
     <footer>
         <p>© 2025 GuoCalix | 项目，是梦想的原型</p>
     </footer>
+    
+    <script>
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('mobileMenu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
