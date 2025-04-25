@@ -36,6 +36,18 @@ body {
     z-index: 250;
 }
 
+.menu-button {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    z-index: 999;
+    background: transparent;
+    border: none;
+    color: white;
+    display: none; /* 默认隐藏，只有小屏显示 */
+}
+
 .mobile-menu.active {
     left: 0;
 }
@@ -126,56 +138,6 @@ h2 {
     text-align: center;
 }
 
-@media (max-width: 768px) {
-    nav {
-        padding: 1rem;
-    }
-
-    nav a {
-        margin: 0 0.5rem;
-        padding: 0.6rem 1rem;
-        display: inline-block;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    .content {
-        padding: 0 1rem;
-        margin-left: 0;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .sidebar {
-        width: 100%;
-        height: 100%;
-        padding-top: 4rem;
-        background: transparent;
-        backdrop-filter: blur(10px);
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-    }
-
-    .label {
-        display: inline;
-        opacity: 1;
-    }
-}
-
-@media (max-width: 480px) {
-    nav a {
-        margin: 0.5rem;
-        display: block;
-        width: fit-content;
-        margin: 0.5rem auto;
-    }
-}
-
 .sidebar {
     position: fixed;
     top: 0;
@@ -192,6 +154,15 @@ h2 {
     flex-direction: column;
     align-items: stretch;
     padding-top: 4rem;
+}
+
+/* Hover 展开 */
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar.open {
+    transform: translateX(0);
 }
 
 .sidebar:hover {
@@ -237,4 +208,81 @@ h2 {
 .sidebar:hover .label {
     opacity: 1;
     display: inline;
+}
+
+@media (max-width: 768px) {
+    
+    .content {
+        padding: 0 1rem;
+        margin-left: -80px; /* 让内容排除边栏，保证居中 */
+    }
+
+    nav {
+        padding: 1rem;
+    }
+
+    nav a {
+        margin: 0 0.5rem;
+        padding: 0.6rem 1rem;
+        display: inline-block;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 200px;
+        background: rgba(255, 255, 255, 0.5);
+        transform: translateX(-100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 300;
+        display: flex;
+        flex-direction: column;
+        padding-top: 4rem;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .sidebar .label{
+        opacity: 0;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .sidebar.active .label {
+        opacity: 1;
+        white-space: nowrap;
+        margin-left: 0.8rem;
+        display: inline;
+    }
+
+    .menu-button {
+        display: block;
+        position: fixed;
+        top: 1rem;
+        left: 0.7rem;
+        background: transparent;
+        border: none;
+        font-size: 2rem;
+        color: white;
+        z-index: 999;
+    }
+}
+@media (max-width: 480px) {
+    nav a {
+        margin: 0.5rem;
+        display: block;
+        width: fit-content;
+        margin: 0.5rem auto;
+    }
 }

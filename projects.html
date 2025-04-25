@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="styleprojects.css">
 </head>
 <body>
+    <button class="menu-button" onclick="toggleSidebar()">☰</button>
+
     <header>
         <h1>项目实践</h1>
         <p>从想法到落地，用代码构建叙事</p>
     </header>
 
     <div class="sidebar">
-    <a href="index.html" class="tab active">
+    <a href="index.html" class="tab">
         <span class="icon">🏠</span>
         <span class="label">首页</span>
     </a>
@@ -21,7 +23,7 @@
         <span class="icon">🛠</span>
         <span class="label">技术笔记</span>
     </a>
-    <a href="projects.html" class="tab">
+    <a href="projects.html" class="tab active">
         <span class="icon">📁</span>
         <span class="label">项目实践</span>
     </a>
@@ -46,14 +48,15 @@
     <footer>
         <p>© 2025 GuoCalix | 项目，是梦想的原型</p>
     </footer>
-    
-    <script>
-        const toggle = document.getElementById('menuToggle');
-        const menu = document.getElementById('mobileMenu');
 
-        toggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
+    <script>
+        const menuButton = document.querySelector('.menu-button');
+        const sidebar = document.querySelector('.sidebar');
+
+        menuButton.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
         });
     </script>
+
 </body>
 </html>
