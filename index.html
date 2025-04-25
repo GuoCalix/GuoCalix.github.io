@@ -112,6 +112,22 @@
             text-align: center;
         }
 
+        .scroll-to-comments {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.6rem;
+            background: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            }
+        .scroll-to-comments:hover {
+            background: #42a5f5;
+            transform: translateY(-2px);
+        }
+
+
         @media (max-width: 768px) {
             nav {
                 padding: 1rem;
@@ -172,6 +188,7 @@
 
 
     <footer>
+        <a href="https://github.com/GuoCalix/guestbook/issues/new" class="scroll-to-comments">留言版</a>
         <p>© 2025 GuoCalix | 代码如诗，思维似星</p>
     </footer>
 </body>
