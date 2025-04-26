@@ -189,47 +189,117 @@
     <div class="content" id="guestbook">
         <h2>留言板</h2>
         <div>
-            <textarea id="msgInput" placeholder="写点什么..." rows="4" style="width:100%; padding: 10px; border-radius: 10px;"></textarea>
-            <button onclick="submitComment()" style="margin-top:10px; padding: 8px 16px;">提交留言</button>
-            <select id="sortType" onchange="loadComments()" style="float: right;">
-                <option value="created">按时间</option>
-                <option value="updated">按更新</option>
-                <option value="comments">按评论数</option>
-            </select>
+            <input type="text" id="nicknameInput" placeholder="你的昵称" 
+                style="width:100%; padding: 10px; border-radius: 5px; margin-bottom: 8px;">
+            <textarea id="msgInput" placeholder="留言内容..." 
+                    rows="3" style="width:100%; padding: 10px; border-radius: 5px;"></textarea>
+            <button onclick="submitComment()" 
+                    style="margin-top:10px; padding: 8px 16px; background: #64b5f6; border: none; border-radius: 5px;">
+                提交留言
+            </button>
         </div>
-        <ul id="commentsList" style="list-style:none; padding-left:0; margin-top:20px;"></ul>
+
+        <div style="margin-top: 20px;">
+            <button id="toggleCommentsBtn" onclick="toggleComments()"
+                    style="padding: 8px 16px; background: rgba(100,181,246,0.2); border: none; border-radius: 5px;">
+                显示留言 (0)
+            </button>
+            <div id="commentsContainer" style="display:none; margin-top:10px;">
+                <ul id="commentsList" style="list-style:none; padding-left:0;"></ul>
+            </div>
+        </div>
     </div>
 
     <script>
-        const API_URL ='https://guestbook-api-five.vercel.app/api/comments';
+        const API_URL = 'https://guestbook-api-five.vercel.app/api/comments';
+        let commentsVisible = false;
 
+        // 切换留言显示状态
+        function toggleComments() {
+            commentsVisible = !commentsVisible;
+            const container = document.getElementById('commentsContainer');
+            const btn = document.getElementById('toggleCommentsBtn');
+            
+            container.style.display = commentsVisible ? 'block' : 'none';
+            btn.textContent = commentsVisible ? '隐藏留言' : `显示留言 (${document.getElementById('commentsList').children.length})`;
+            
+            if(commentsVisible && document.getElementById('commentsList').innerHTML === '') {
+                loadComments();
+            }
+        }
+
+        // 加载留言
         async function loadComments() {
-            const sort = document.getElementById('sortType').value;
-            const res = await fetch(`${API_URL}?sort=${sort}&direction=desc`);
-            const comments = await res.json();
-            const list = document.getElementById('commentsList');
-            list.innerHTML = '';
-            comments.forEach(c => {
-                const item = document.createElement('li');
-                item.style.padding = '10px 0';
-                item.innerHTML = `<strong>${c.title}</strong><p>${c.body}</p>`;
-                list.appendChild(item);
-            });
+            try {
+                const res = await fetch(API_URL);
+                const comments = await res.json();
+                const list = document.getElementById('commentsList');
+                list.innerHTML = '';
+
+                comments.forEach(c => {
+                    const item = document.createElement('li');
+                    item.style.padding = '8px 0';
+                    item.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+                    item.innerHTML = `
+                        <div style="font-size:0.9em;">
+                            <span style="color:#64b5f6">${c.title || '匿名'}:</span> 
+                            <span style="color:rgba(255,255,255,0.8)">${c.body || '无内容'}</span>
+                        </div>
+                        <div style="font-size:0.8em; color:rgba(255,255,255,0.5); margin-top:4px;">
+                            ${new Date(c.created_at).toLocaleString()}
+                        </div>
+                    `;
+                    list.appendChild(item);
+                });
+
+                // 更新按钮计数
+                document.getElementById('toggleCommentsBtn').textContent = 
+                    commentsVisible ? `隐藏留言 (${comments.length})` : `显示留言 (${comments.length})`;
+            } catch (error) {
+                console.error('加载失败:', error);
+                document.getElementById('commentsList').innerHTML = `
+                    <li style="color:#f44336; padding:10px 0;">加载失败，请刷新重试</li>
+                `;
+            }
         }
 
+        // 提交留言
         async function submitComment() {
+            const nickname = document.getElementById('nicknameInput').value.trim();
             const content = document.getElementById('msgInput').value.trim();
-            if (!content) return alert("留言不能为空！");
-            await fetch(API_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ title: content.slice(0, 20), body: content })
-            });
-            document.getElementById('msgInput').value = '';
-            loadComments();
+            
+            if (!content) return alert("留言内容不能为空！");
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        title: nickname || '匿名',  // 昵称作为标题
+                        body: content              // 留言内容
+                    })
+                });
+                
+                if (!response.ok) throw new Error('提交失败');
+                
+                // 清空输入框
+                document.getElementById('msgInput').value = '';
+                
+                // 如果留言区已展开，则刷新
+                if(commentsVisible) loadComments();
+                else {
+                    // 只更新按钮计数
+                    const btn = document.getElementById('toggleCommentsBtn');
+                    const currentCount = parseInt(btn.textContent.match(/\d+/)?.[0] || 0);
+                    btn.textContent = `显示留言 (${currentCount + 1})`;
+                }
+                
+                alert('留言成功！');
+            } catch (error) {
+                console.error('提交失败:', error);
+                alert('留言提交失败，请稍后重试。');
+            }
         }
-
-        loadComments();
     </script>
 
 
