@@ -186,9 +186,55 @@
         </div>
     </div>
 
+    <div class="content" id="guestbook">
+        <h2>留言板</h2>
+        <div>
+            <textarea id="msgInput" placeholder="写点什么..." rows="4" style="width:100%; padding: 10px; border-radius: 10px;"></textarea>
+            <button onclick="submitComment()" style="margin-top:10px; padding: 8px 16px;">提交留言</button>
+            <select id="sortType" onchange="loadComments()" style="float: right;">
+                <option value="created">按时间</option>
+                <option value="updated">按更新</option>
+                <option value="comments">按评论数</option>
+            </select>
+        </div>
+        <ul id="commentsList" style="list-style:none; padding-left:0; margin-top:20px;"></ul>
+    </div>
+
+    <script>
+        const API_URL ='https://guestbook-api-five.vercel.app/api/comments';
+
+        async function loadComments() {
+            const sort = document.getElementById('sortType').value;
+            const res = await fetch(`${API_URL}?sort=${sort}&direction=desc`);
+            const comments = await res.json();
+            const list = document.getElementById('commentsList');
+            list.innerHTML = '';
+            comments.forEach(c => {
+                const item = document.createElement('li');
+                item.style.padding = '10px 0';
+                item.innerHTML = `<strong>${c.title}</strong><p>${c.body}</p>`;
+                list.appendChild(item);
+            });
+        }
+
+        async function submitComment() {
+            const content = document.getElementById('msgInput').value.trim();
+            if (!content) return alert("留言不能为空！");
+            await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title: content.slice(0, 20), body: content })
+            });
+            document.getElementById('msgInput').value = '';
+            loadComments();
+        }
+
+        loadComments();
+    </script>
+
 
     <footer>
-        <a href="https://github.com/GuoCalix/guestbook/issues/new" class="scroll-to-comments">留言版</a>
+        <a href="https://github.com/GuoCalix/guestbook/issues/new" class="scroll-to-comments">留言板</a>
         <p>© 2025 GuoCalix | 代码如诗，思维似星</p>
     </footer>
 </body>
