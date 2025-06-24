@@ -1,0 +1,13 @@
+/* === 玻璃模糊效果，仅文章页生效 === */
+body[for="html-export"] {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /* 兼容 Safari */
+}
+
+/* 可选：让内容容器半透明配合模糊效果更明显 */
+.markdown-preview {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
