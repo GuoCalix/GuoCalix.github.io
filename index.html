@@ -1,42 +1,109 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>项目实践 - GuoCalix's Blog</title>
-    <link rel="stylesheet" href="styleabout.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jiawei Guo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>GuoCalix's Space</h1>
-        <p>探索编程宇宙的无限可能 ✨</p>
-        <p>Contact: calixguo@sjtu.edu.cn</p>
-    </header>
+  <div class="site-wrapper">
+    <main>
+      <section class="intro">
+        <div class="intro-content">
+          <img src="me.jpg" alt="Jiawei Guo" class="intro-avatar">
+          <div class="intro-text">
+            <h1>Jiawei Guo</h1>
+            <p>
+              Hi, I am Jiawei Guo, a CS undergraduate at SJTU (IEEE Honor Class).
+            </p>
+            <div class="intro-links">
+              <a href="mailto:calixguo@sjtu.edu.cn" title="Email" aria-label="Email">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 6h16v12H4z"></path>
+                  <path d="m4 7 8 6 8-6"></path>
+                </svg>
+              </a>
+              <a href="#" title="Google Scholar" aria-label="Google Scholar">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3 2 9l10 6 10-6-10-6Z"></path>
+                  <path d="M6 12v4c0 1.7 2.7 3 6 3s6-1.3 6-3v-4"></path>
+                </svg>
+              </a>
+              <a href="https://github.com/GuoCalix" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 20 4a5 5 0 0 0-.1-3.5S18.7.1 16 2a13.4 13.4 0 0 0-7 0C6.3.1 5.1.5 5.1.5A5 5 0 0 0 5 4a5.4 5.4 0 0 0-1.5 3.5c0 5.4 3.3 6.6 6.5 7a3.4 3.4 0 0 0-1 2.6V22"></path>
+                </svg>
+              </a>
+              <a href="#" title="CV" aria-label="CV">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 3h9l3 3v15H6z"></path>
+                  <path d="M15 3v4h4"></path>
+                  <path d="M9 13h6"></path>
+                  <path d="M9 17h6"></path>
+                  <path d="M9 9h2"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <nav>
-        <a href="notes.html">技术笔记</a>
-        <a href="projects.html">项目实践</a>
-        <a href="about.html">关于我</a>
-    </nav>
-
-    <div class="content">
-        <h2>最新文章</h2>
-        
-        <div class="article-card">
-            <h3><a href="Cpp_abstract_data_type.html">C++抽象数据类型解析</a></h3>
-            <p>深入探讨C++中抽象数据类型的设计哲学与实现细节...</p>
-            <div class="meta">2025年3月 | 阅读量 514</div>
+      <section class="section">
+        <div class="section-header">
+          <h2>Research <span class="header-note">* indicates equal contribution.</span></h2>
         </div>
 
-        <div class="article-card">
-            <h3><a href="python3_objects_and_class_introduction.html">Python面向对象编程杂记</a></h3>
-            <p>从class到object的路线图...</p>
-            <div class="meta">2025年2月 | 阅读量 114</div>
+        <div class="research-flow">
+          <div class="flow-card">
+            <h3 class="flow-title">
+              <span class="flow-title-text">FlashClear: Ultra-Fast Image Content Removal via Efficient Step Distillation and Feature Caching</span>
+              <span class="flow-venue">Under Review</span>
+            </h3>
+            <p class="flow-authors">Yixin Tang*, <strong>Jiawei Guo*</strong>, Junxian Li, Zhiteng Li, Jixin Zhao, Bingya Zhang, Chenbo Wang, Yulun Zhang, Shangchen Zhou</p>
+            <div class="flow-links">
+              <a href="https://arxiv.org/abs/2605.09003" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M14 3H6v18h12V7z"></path>
+                  <path d="M14 3v4h4"></path>
+                  <path d="M8 14h8"></path>
+                  <path d="M8 17h6"></path>
+                  <path d="M8 10h3"></path>
+                </svg>
+                Paper
+              </a>
+              <a href="https://github.com/GuoCalix/FlashClear" target="_blank" rel="noopener" class="gh-star-link">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 20 4a5 5 0 0 0-.1-3.5S18.7.1 16 2a13.4 13.4 0 0 0-7 0C6.3.1 5.1.5 5.1.5A5 5 0 0 0 5 4a5.4 5.4 0 0 0-1.5 3.5c0 5.4 3.3 6.6 6.5 7a3.4 3.4 0 0 0-1 2.6V22"></path>
+                </svg>
+                GitHub
+                <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9z"></path>
+                </svg>
+                <span data-gh="GuoCalix/FlashClear">0</span>
+              </a>
+            </div>
+          </div>
         </div>
-    </div>
+      </section>
+
+    </main>
 
     <footer>
-        <p>© 2025 GuoCalix | 代码如诗，思维似星</p>
+      <p>&copy; 2026 Jiawei Guo</p>
     </footer>
+  </div>
+  <script>
+    document.querySelectorAll("[data-gh]").forEach((el) => {
+      fetch("https://api.github.com/repos/" + el.dataset.gh)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.stargazers_count != null) {
+            el.textContent = data.stargazers_count.toLocaleString();
+          }
+        })
+        .catch(() => {});
+    });
+  </script>
 </body>
 </html>
