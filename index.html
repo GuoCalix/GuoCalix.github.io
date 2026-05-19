@@ -82,7 +82,7 @@
                 <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9z"></path>
                 </svg>
-                <span data-gh="GuoCalix/FlashClear">0</span>
+                <span data-shields-stars="GuoCalix/FlashClear">...</span>
               </a>
             </div>
           </div>
@@ -124,7 +124,7 @@
                 <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9z"></path>
                 </svg>
-                <span data-gh="SJTU-DeepVisionLab/WorldAct">0</span>
+                <span data-shields-stars="SJTU-DeepVisionLab/WorldAct">...</span>
               </a>
             </div>
           </div>
@@ -139,15 +139,17 @@
     </footer>
   </div>
   <script>
-    document.querySelectorAll("[data-gh]").forEach((el) => {
-      fetch("https://api.github.com/repos/" + el.dataset.gh)
+    document.querySelectorAll("[data-shields-stars]").forEach((el) => {
+      fetch("https://img.shields.io/github/stars/" + el.dataset.shieldsStars + ".json")
         .then((response) => response.json())
         .then((data) => {
-          if (data.stargazers_count != null) {
-            el.textContent = data.stargazers_count.toLocaleString();
+          if (data.message) {
+            el.textContent = data.message;
           }
         })
-        .catch(() => {});
+        .catch(() => {
+          el.textContent = "-";
+        });
     });
   </script>
 </body>
